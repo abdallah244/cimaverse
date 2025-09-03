@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-3d-project": {
+    "cimaverse": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/cimaverse",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -38,8 +39,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "20kB",
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"
@@ -56,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-3d-project:build:production"
+              "buildTarget": "cimaverse:build:production"
             },
             "development": {
-              "buildTarget": "angular-3d-project:build:development"
+              "buildTarget": "cimaverse:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,6 +85,13 @@
             "styles": [
               "src/styles.css"
             ]
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "branch": "gh-pages",
+            "message": "Deploying to GitHub Pages"
           }
         }
       }
